@@ -1,6 +1,6 @@
 // Import stylesheets
 import './style.css';
-import { closestPointInPolygon } from './closestPointToPolygon';
+import { closestPointInPolygon } from './src/closestPointToPolygon';
 
 interface Point {
   x: number;
