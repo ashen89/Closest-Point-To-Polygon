@@ -8,27 +8,30 @@ interface Point {
 }
 
 const polygon = [
-  { x: 400, y: 200 },
-  { x: 200, y: 200 },
-  { x: 200, y: 50 },
-  { x: 400, y: 50 },
-  { x: 400, y: 200 },
+  { x: 200, y: 150 },
+  { x: 150, y: 150 },
+  { x: 50, y: 150 },
+  { x: 100, y: 50 },
+  { x: 200, y: 150 },
 ];
 
 const Point = {
-  x: 100,
-  y: 100,
+  x: 180,
+  y: 80,
 };
 
-const cPoint = {
-  x: 400,
-  y: 100,
+//Edit here for render x and y from console.log
+const closePoint = {
+  x: 155,
+  y: 105,
 };
 
 var canvas = document.getElementById('canvas')! as HTMLCanvasElement;
 var ctx = canvas.getContext('2d')!;
 canvas.width = 400;
 canvas.height = 500;
+
+closestPointInPolygon(polygon, Point);
 
 function render() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -56,7 +59,7 @@ function render() {
       ctx.stroke();
     }
   }
-  closestPoint(cPoint);
+  closestPoint(closePoint);
 
   // Draw polygons
   ctx.fillStyle = 'rgba(0, 8, 247,.1)';
