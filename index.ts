@@ -16,7 +16,12 @@ const polygon = [
 ];
 
 const Point = {
-  x: 220,
+  x: 100,
+  y: 100,
+};
+
+const cPoint = {
+  x: 400,
   y: 100,
 };
 
@@ -39,7 +44,19 @@ function render() {
       ctx.stroke();
     }
   }
-  drawPoint(closestPointInPolygon(polygon, Point));
+  drawPoint(Point);
+
+  function closestPoint(point) {
+    if (point) {
+      ctx.beginPath();
+      ctx.arc(point.x, point.y, 2, 0, 2 * Math.PI, false);
+      ctx.fillStyle = '#fff';
+      ctx.fill();
+      ctx.lineWidth = 5;
+      ctx.stroke();
+    }
+  }
+  closestPoint(cPoint);
 
   // Draw polygons
   ctx.fillStyle = 'rgba(0, 8, 247,.1)';
