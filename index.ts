@@ -53,7 +53,7 @@ function render() {
 
   function closestPoint(point) {
     if (point) {
-      ctx.strokeStyle = 'rgba(255,0,0,.3)';
+      ctx.strokeStyle = 'rgba(255,0,0,.5)';
       ctx.lineWidth = 2;
       ctx.beginPath();
       ctx.arc(point.x, point.y, 2, 0, 2 * Math.PI, false);
@@ -70,7 +70,7 @@ function render() {
 
   // Draw polygons
   function drawPolygon(polygon) {
-    ctx.fillStyle = 'rgba(0, 8, 247,.1)';
+    ctx.fillStyle = 'rgba(0, 8, 247,.2)';
     ctx.lineWidth = 2;
     ctx.beginPath();
     polygon.forEach(function (vertex) {
