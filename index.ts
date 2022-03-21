@@ -53,6 +53,8 @@ function render() {
 
   function closestPoint(point) {
     if (point) {
+      ctx.strokeStyle = 'rgba(255,0,0,.3)';
+      ctx.lineWidth = 2;
       ctx.beginPath();
       ctx.arc(point.x, point.y, 2, 0, 2 * Math.PI, false);
       ctx.fillStyle = '#fff';
