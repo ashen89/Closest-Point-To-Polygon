@@ -7,12 +7,21 @@ interface Point {
   y: number;
 }
 
-const polygon = [
-  { x: 200, y: 150 },
-  { x: 150, y: 150 },
-  { x: 50, y: 150 },
-  { x: 100, y: 50 },
-  { x: 200, y: 150 },
+const polygons = [
+  [
+    { x: 200, y: 150 },
+    { x: 150, y: 150 },
+    { x: 50, y: 150 },
+    { x: 100, y: 50 },
+    { x: 200, y: 150 },
+  ],
+  [
+    { x: 350, y: 150 },
+    { x: 250, y: 150 },
+    { x: 250, y: 50 },
+    { x: 350, y: 50 },
+    { x: 350, y: 150 },
+  ],
 ];
 
 //RandomPoint x,y
@@ -21,13 +30,10 @@ const Point = {
   y: 80,
 };
 
-
 var canvas = document.getElementById('canvas')! as HTMLCanvasElement;
 var ctx = canvas.getContext('2d')!;
 canvas.width = 400;
 canvas.height = 500;
-
-closestPointInPolygon(polygon, Point);
 
 function render() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -55,19 +61,26 @@ function render() {
       ctx.stroke();
     }
   }
-  closestPoint(closestPointInPolygon(polygon, Point));
+  polygons.forEach((polygon) => {
+    closestPoint(closestPointInPolygon(polygon, Point));
+  });
+  // closestPoint(closestPointInPolygon(polygon, Point));
 
   // Draw polygons
-  ctx.fillStyle = 'rgba(0, 8, 247,.1)';
-  ctx.lineWidth = 2;
-  ctx.beginPath();
-  polygon.forEach(function (vertex) {
-    ctx.lineTo(vertex.x, vertex.y);
+  function drawPolygon(polygon) {
+    ctx.fillStyle = 'rgba(0, 8, 247,.1)';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    polygon.forEach(function (vertex) {
+      ctx.lineTo(vertex.x, vertex.y);
+    });
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+  }
+  polygons.forEach((polygon) => {
+    drawPolygon(polygon);
   });
-  ctx.closePath();
-  ctx.fill();
-  ctx.stroke();
 }
 
 render();
-
