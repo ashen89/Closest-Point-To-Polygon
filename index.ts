@@ -15,16 +15,12 @@ const polygon = [
   { x: 200, y: 150 },
 ];
 
+//RandomPoint x,y
 const Point = {
-  x: 180,
+  x: 160,
   y: 80,
 };
 
-//Edit here for render x and y from console.log
-const closePoint = {
-  x: 155,
-  y: 105,
-};
 
 var canvas = document.getElementById('canvas')! as HTMLCanvasElement;
 var ctx = canvas.getContext('2d')!;
@@ -59,7 +55,7 @@ function render() {
       ctx.stroke();
     }
   }
-  closestPoint(closePoint);
+  closestPoint(closestPointInPolygon(polygon, Point));
 
   // Draw polygons
   ctx.fillStyle = 'rgba(0, 8, 247,.1)';
@@ -74,3 +70,4 @@ function render() {
 }
 
 render();
+

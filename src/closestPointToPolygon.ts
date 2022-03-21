@@ -21,14 +21,13 @@ export function closestPointInPolygon(poly, pos: Point): Point {
   }
   const rc = checkPointInsidePolygon(poly, pos);
   if (rc === true) {
-    console.log(pos);
-    return;
+    return pos;
   }
 
   //2- If the point is outside the polygon
   function outSideClosestPoint(poly, pos) {
     let map = [];
-    let minDis = 0;
+    let minDis;
 
     for (let j = 0; j < poly.length - 1; j++) {
       let disArr = {};
@@ -62,20 +61,17 @@ export function closestPointInPolygon(poly, pos: Point): Point {
       disArr['dis'] = Math.sqrt(dx * dx + dy * dy);
       map.push(disArr);
     }
+    console.log(map);
 
     for (let k = 0; k < map.length; k++) {
-      if (minDis === 0) {
-        minDis = map[0].dis;
-      } else if (minDis > map[k].dis) {
-        minDis = map[k].dis;
+      if (k === 0) {
+        minDis = map[0];
+      } else if (minDis.dis > map[k].dis) {
+        minDis = map[k];
       }
     }
-    for (let l = 0; l < map.length; l++) {
-      if (map[l].dis === minDis) {
-        console.log({ x: map[l].x, y: map[l].y });
-        return;
-      }
-    }
+    return { x: minDis.x, y: minDis.y };
   }
-  outSideClosestPoint(poly, pos);
+  const v = outSideClosestPoint(poly, pos);
+  return v;
 }
