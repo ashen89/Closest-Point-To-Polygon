@@ -1,6 +1,7 @@
 export function closestPointInPolygon(poly, pos: Point): Point {
   //1- Checking if the point is inside the polygon. If it is then return point
 
+  //Ray casting algorithm is used for this.
   function checkPointInsidePolygon(poly, pos) {
     const n = poly.length;
     const x = pos.x;
