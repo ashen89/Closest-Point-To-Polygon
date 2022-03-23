@@ -25,7 +25,7 @@ const polygons = [
 ];
 
 //RandomPoint x,y
-const Point = {
+let Point = {
   x: 160,
   y: 80,
 };
@@ -86,3 +86,31 @@ function render() {
 }
 
 render();
+
+function randomCordRender(c) {
+  const coordinates = { x: c.clientX, y: c.clientY };
+  const { x: Ox, y: Oy } = (
+    c.target as HTMLCanvasElement
+  ).getBoundingClientRect();
+  Point = {
+    x: Math.floor(coordinates.x - Ox),
+    y: Math.floor(coordinates.y - Oy),
+  };
+  render();
+}
+
+let isMouseDown = false;
+
+canvas.onmousedown = function (c) {
+  isMouseDown = true;
+  randomCordRender(c);
+};
+canvas.onmouseup = function (c) {
+  isMouseDown = false;
+  randomCordRender(c);
+};
+canvas.onmousemove = function (c) {
+  if (isMouseDown) {
+    randomCordRender(c);
+  }
+};
